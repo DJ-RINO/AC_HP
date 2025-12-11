@@ -636,55 +636,91 @@
             .hero-left {
                 width: 100%;
                 padding: 0 20px 40px 20px;
-                text-align: center;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                justify-content: center;
+                /* タイトル等は中央でも良いが、説明文は左寄せにするためコンテナは調整 */
             }
 
             .intro-content {
-                padding: 0;
-                text-align: center;
+                padding: 0 10px;
+                text-align: left;
+                /* 説明文の可読性向上のため左寄せ */
                 width: 100%;
+                max-width: 400px;
+                /* 極端に広がらないように */
             }
 
             .intro-jp {
                 font-size: 1rem;
                 margin-bottom: 15px;
+                text-align: center;
+                /* キャッチコピーは中央でOK */
             }
 
             .intro-en {
                 font-size: 2rem;
                 line-height: 1.2;
                 margin-bottom: 20px;
+                text-align: center;
+                /* 英語タイトルも中央 */
             }
 
             .intro-desc {
                 font-size: 0.9rem;
                 margin-bottom: 30px;
+                text-align: justify;
+                /* 両端揃え気味にして「箱」感を出す */
+                line-height: 1.8;
+            }
+
+            /* ボタンを中央に戻すためのラッパー調整が必要だが、
+               現状のHTML構造を変えずにCSSで対応するため
+               ボタン自体にmargin: 0 autoを適用 */
+            .intro-content .btn-hero {
+                display: block;
+                width: fit-content;
+                margin: 0 auto;
             }
 
             .hero-right {
                 width: 100%;
                 height: 300px;
-                /* アニメーションエリアの高さを確保 */
-                position: relative;
                 margin-top: 40px;
             }
 
-            /* フッターリンク：縦積み */
+            /* Criteriaリスト：スマホでの余白削減 */
+            .criteria-list {
+                padding: 25px 15px;
+                /* 元の60pxから大幅縮小 */
+            }
+
+            .criteria-item {
+                padding-bottom: 20px;
+                margin-bottom: 20px;
+            }
+
+            /* フッターリンク：横並び（1列） */
             .footer-links {
                 display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 20px;
+                flex-direction: row;
+                /* 横並び */
+                flex-wrap: nowrap;
+                /* 折り返し禁止（1列） */
+                justify-content: center;
+                gap: 10px;
+                /* 間隔を狭める */
+                white-space: nowrap;
+                /* 改行禁止 */
             }
 
             .footer-links a {
                 margin: 0;
-                display: block;
-                font-size: 1rem;
+                display: inline-block;
+                font-size: 0.75rem;
+                /* 小さくして収める */
+                padding: 5px;
+                /* タップ領域確保 */
             }
         }
     </style>
