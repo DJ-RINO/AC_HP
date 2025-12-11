@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一般社団法人 Authorized Cannabinoid | 公式サイト</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* --- 基本設定 (Reset & Base) --- */
+        :root {
+            --color-white: #FFFFFF;
+            --color-primary: #004D40;
+            /* ディープティール：知性と信頼 */
+            --color-accent: #C5A059;
+            /* シャンパンゴールド：品質と品格 */
+            --color-text: #333333;
+            --color-text-light: #666666;
+            --color-bg-light: #F9F9F9;
+            --font-jp: 'Noto Sans JP', sans-serif;
+            --font-en: 'Montserrat', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-jp);
+            color: var(--color-text);
+            background-color: var(--color-white);
+            line-height: 1.8;
+            letter-spacing: 0.05em;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: var(--font-en);
+            /* 見出しは英語フォント主体でモダンに */
+            font-weight: 500;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: opacity 0.3s;
+        }
+
+        a:hover {
+            opacity: 0.7;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        /* --- コンポーネント --- */
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            border: 1px solid var(--color-accent);
+            color: var(--color-accent);
+            font-family: var(--font-jp);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--color-accent);
+            color: var(--color-white);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            letter-spacing: 0.05em;
+            margin-bottom: 15px;
+        }
+
+        .section-title span {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--color-accent);
+            font-family: var(--font-jp);
+            font-weight: 400;
+        }
+
+        /* --- Header --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-family: var(--font-en);
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--color-text);
+            font-family: var(--font-en);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: radial-gradient(circle at center, #ffffff 0%, #f4f7f6 100%);
+            position: relative;
+        }
+
+        /* 抽象的な背景装飾 */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60vw;
+            height: 60vw;
+            border: 1px solid rgba(0, 77, 64, 0.05);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero-jp {
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+            color: var(--color-text);
+        }
+
+        .hero-en {
+            font-family: var(--font-en);
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: 30px;
+            line-height: 1.1;
+        }
+
+        .hero-desc {
+            font-size: 1rem;
+            color: var(--color-text-light);
+            margin-bottom: 50px;
+        }
+
+        /* --- Mission Section --- */
+        .mission {
+            background-color: var(--color-white);
+        }
+
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .mission-card {
+            padding: 40px 30px;
+            border: 1px solid #eee;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            color: var(--color-accent);
+            margin-bottom: 20px;
+            font-family: var(--font-en);
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--color-primary);
+        }
+
+        .card-text {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+        }
+
+        /* --- Criteria Section (Checklist) --- */
+        .criteria {
+            background-color: var(--color-bg-light);
+        }
+
+        .criteria-list {
+            background: var(--color-white);
+            padding: 60px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.02);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .criteria-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .criteria-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .check-mark {
+            color: var(--color-primary);
+            margin-right: 20px;
+            font-size: 1.2rem;
+        }
+
+        .criteria-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--color-text);
+        }
+
+        .criteria-content p {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+        }
+
+        .criteria-separator {
+            margin: 40px 0;
+            border-bottom: 2px dashed #eee;
+        }
+
+        .criteria-sub-title {
+            font-family: var(--font-en);
+            font-size: 1.4rem;
+            color: var(--color-primary);
+            margin-bottom: 25px;
+            padding-left: 10px;
+            border-left: 4px solid var(--color-accent);
+            line-height: 1.2;
+        }
+
+        .criteria-sub-title span {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--color-text-light);
+            font-family: var(--font-jp);
+            font-weight: normal;
+            margin-top: 5px;
+        }
+
+        /* --- Compliance (Zero Tolerance) --- */
+        .zero-tolerance {
+            background-color: #FFFDFDF0;
+            /* 非常に薄い赤、または白に近い色で清潔感を保つ */
+            color: var(--color-text);
+            text-align: center;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .zero-tolerance h2 {
+            color: var(--color-primary);
+            /* メインカラーに戻し、過度な警告色を避ける */
+        }
+
+        .zero-tolerance span {
+            color: #E57373;
+            /* マイルドな赤 */
+        }
+
+        .warning-box {
+            background-color: #fff;
+            border: 1px solid #ffebee;
+            padding: 40px;
+            display: inline-block;
+            margin-top: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+            border-radius: 8px;
+        }
+
+        .warning-list {
+            list-style: none;
+            text-align: left;
+            margin: 0 auto;
+            max-width: 600px;
+        }
+
+        .warning-list li {
+            margin-bottom: 12px;
+            padding-left: 24px;
+            position: relative;
+            color: #555;
+        }
+
+        .warning-list li::before {
+            content: '!';
+            position: absolute;
+            left: 0;
+            top: 2px;
+            width: 16px;
+            height: 16px;
+            background-color: #ffebee;
+            color: #E57373;
+            font-size: 10px;
+            text-align: center;
+            line-height: 16px;
+            border-radius: 50%;
+            font-weight: bold;
+        }
+
+        /* --- Membership --- */
+        .membership {
+            text-align: center;
+        }
+
+        .price-box {
+            margin: 40px auto;
+            padding: 40px;
+            border: 1px solid var(--color-primary);
+            max-width: 500px;
+            position: relative;
+        }
+
+        .price-label {
+            font-size: 0.9rem;
+            color: var(--color-primary);
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .price {
+            font-size: 3.5rem;
+            font-family: var(--font-en);
+            font-weight: 300;
+            color: var(--color-text);
+        }
+
+        .price-note {
+            font-size: 0.8rem;
+            color: var(--color-text-light);
+            margin-top: 10px;
+        }
+
+        /* --- Organization --- */
+        .organization {
+            background-color: var(--color-bg-light);
+        }
+
+        .org-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        .org-table th,
+        .org-table td {
+            padding: 20px;
+            border-bottom: 1px solid #e0e0e0;
+            text-align: left;
+        }
+
+        .org-table th {
+            width: 30%;
+            font-weight: 500;
+            color: var(--color-primary);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .footer-links {
+            margin-bottom: 30px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0 15px;
+            font-size: 0.9rem;
+        }
+
+        .copyright {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-family: var(--font-en);
+        }
+
+        /* --- Mobile --- */
+        @media (max-width: 768px) {
+            .hero-en {
+                font-size: 2.5rem;
+            }
+
+            .hero-jp {
+                font-size: 1.4rem;
+            }
+
+            .header-inner {
+                flex-direction: column;
+                justify-content: center;
+                height: auto;
+                padding: 15px 0;
+            }
+
+            nav ul {
+                margin-top: 15px;
+            }
+
+            nav ul li {
+                margin: 0 10px;
+                margin-left: 0;
+            }
+
+            .section-padding {
+                padding: 60px 0;
+            }
+
+            .criteria-list {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <div class="logo">AUTHORIZED CANNABINOID</div>
+            <nav>
+                <ul>
+                    <li><a href="#about">ABOUT</a></li>
+                    <li><a href="#criteria">CRITERIA</a></li>
+                    <li><a href="#membership">MEMBERSHIP</a></li>
+                    <li><a href="#org">ORGANIZATION</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <h2 class="hero-jp">科学と法が、信頼を証明する。</h2>
+            <h1 class="hero-en">The New Standard of<br>Cannabinoid Integrity.</h1>
+            <p class="hero-desc">
+                適正な輸入通関、ISO17025準拠の科学的検査、完全なる法令遵守。<br>
+                日本のカンナビノイド市場に「正解」を定義する一般社団法人です。
+            </p>
+            <a href="#membership" class="btn">会員加盟申請 (無料)</a>
+        </div>
+    </section>
+
+    <section id="about" class="mission section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Mission</h2>
+                <span>設立理念</span>
+            </div>
+            <div class="mission-grid">
+                <div class="mission-card">
+                    <div class="card-icon">01</div>
+                    <h3 class="card-title">Legal Compliance<br>法令遵守</h3>
+                    <p class="card-text">関税法、薬機法、食品衛生法等の厳格な遵守。適正な輸入許可の取得を絶対条件とし、業界の健全化を牽引します。</p>
+                </div>
+                <div class="mission-card">
+                    <div class="card-icon">02</div>
+                    <h3 class="card-title">Scientific Evidence<br>科学的根拠</h3>
+                    <p class="card-text">ISO/IEC 17025認定機関による検査証明を尊重。客観的な数値に基づく品質保証で、サプライチェーンの透明性を高めます。</p>
+                </div>
+                <div class="mission-card">
+                    <div class="card-icon">03</div>
+                    <h3 class="card-title">Consumer Safety<br>消費者保護</h3>
+                    <p class="card-text">危険ドラッグや脱法製品との明確な差別化。正確な情報提供により、消費者の健康被害を未然に防ぎます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="criteria" class="criteria section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>The Criteria</h2>
+                <span>認定基準・入会資格</span>
+            </div>
+            <div class="criteria-list">
+
+                <!-- 入会資格 -->
+                <h3 class="criteria-sub-title">Membership Eligibility<span>入会資格 (事業者要件)</span></h3>
+
+                <div class="criteria-item">
+                    <div class="check-mark">✓</div>
+                    <div class="criteria-content">
+                        <h4>納税の義務</h4>
+                        <p>関税・消費税・地方消費税等の適法納付が行われていること。</p>
+                    </div>
+                </div>
+                <div class="criteria-item">
+                    <div class="check-mark">✓</div>
+                    <div class="criteria-content">
+                        <h4>国内連絡体制</h4>
+                        <p>日本国内において責任を持って対応できる連絡体制を有すること。</p>
+                    </div>
+                </div>
+
+                <div class="criteria-separator"></div>
+
+                <!-- 認定基準 -->
+                <h3 class="criteria-sub-title">Product Standards<span>認定基準 (製品・原料要件)</span></h3>
+
+                <div class="criteria-item">
+                    <div class="check-mark">✓</div>
+                    <div class="criteria-content">
+                        <h4>科学的証明 (COA)</h4>
+                        <p>ISO17025認定機関による<strong>フルパネル検査</strong>（カンナビノイド・重金属・農薬・残留溶媒・微生物等）をクリアした原料を正確に使用していること。</p>
+                        <p style="font-size: 0.85rem; color: #777; margin-top: 8px; line-height: 1.6;">
+                            単なる成分分析だけでなく、土壌由来の重金属や栽培・抽出過程の残留化学物質等の汚染がないことを証明し、消費者の安全を完全に担保します。
+                        </p>
+                    </div>
+                </div>
+                <div class="criteria-item">
+                    <div class="check-mark">✓</div>
+                    <div class="criteria-content">
+                        <h4>適正な輸入通関</h4>
+                        <p>関税法第67条に基づく輸入許可証に紐づいた原料を正確に使用していること。</p>
+                    </div>
+                </div>
+                <div class="criteria-item">
+                    <div class="check-mark">✓</div>
+                    <div class="criteria-content">
+                        <h4>区分の明確化</h4>
+                        <p>「食品」または「雑貨」として正規に輸入された製品であること。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="zero-tolerance section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Compliance</h2>
+                <span>取扱不可製品</span>
+            </div>
+            <p>業界の健全な発展のため、以下の製品を取り扱う事業者は<br>会員資格の対象外となります。</p>
+
+            <div class="warning-box">
+                <ul class="warning-list">
+                    <li>指定薬物、危険ドラッグ、及び適正な通関手続きを経ていない製品</li>
+                    <li>いわゆる「合法紙」等の規制薬物アナログ化製品</li>
+                    <li>THC残留限度値を超える製品</li>
+                    <li>未成年者を標的とする不適切な広告・販売</li>
+                    <li>医薬品的な効能効果を標榜する製品</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="membership" class="membership section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Membership</h2>
+                <span>会員制度</span>
+            </div>
+            <p>志を同じくする事業者の皆様へ。<br>入会に伴う費用負担は現在設けておりません。</p>
+
+            <div class="price-box">
+                <div class="price-label">入会金・年会費</div>
+                <div class="price">¥0</div>
+                <div class="price-note">※次年度改定まで（改定時は6ヶ月前に通知）</div>
+            </div>
+
+            <div style="margin-top: 30px;">
+                <p style="margin-bottom: 20px; font-size: 0.9rem; color: var(--color-text-light);">
+                    <strong>会員特典：</strong>最新の法令改正・行政動向情報の提供 / 行政機関との連携支援 / 会報・ニュースレターの受領
+                </p>
+                <a href="#" class="btn">入会申込フォームへ</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="org" class="organization section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Organization</h2>
+                <span>法人概要</span>
+            </div>
+            <table class="org-table">
+                <tr>
+                    <th>名称</th>
+                    <td>一般社団法人 Authorized Cannabinoid</td>
+                </tr>
+                <tr>
+                    <th>所在地</th>
+                    <td>熊本県熊本市中央区神水本町1-1-1302</td>
+                </tr>
+                <tr>
+                    <th>目的</th>
+                    <td>カンナビノイド製品等の適正な輸入通関の促進、会員事業者の健全な発展及び支援、消費者の安全確保</td>
+                </tr>
+                <tr>
+                    <th>役員</th>
+                    <td>
+                        代表理事：松藤 渡<br>
+                        理事：栗原 俊次<br>
+                        理事：関岡 史隆<br>
+                        監事：村田 優也
+                    </td>
+                </tr>
+                <tr>
+                    <th>事業年度</th>
+                    <td>毎年12月1日から翌年11月30日まで</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">会員規則</a>
+                <a href="#">定款</a>
+                <a href="#">プライバシーポリシー</a>
+                <a href="#">お問い合わせ</a>
+            </div>
+            <p class="copyright">&copy; 2025 Authorized Cannabinoid. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一般社団法人 Authorized Cannabinoid | 公式サイト</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap");
+
+        :root {
+            --color-white: #FFFFFF;
+            --color-primary: #004D40;
+            --color-accent: #C5A059;
+            --color-text: #333333;
+            --color-text-light: #666666;
+            --color-bg-light: #F9F9F9;
+            --font-jp: 'Noto Sans JP', sans-serif;
+            --font-en: 'Montserrat', sans-serif;
+            --font-mono: 'Roboto Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #FFFFFF;
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-family: var(--font-jp);
+            color: var(--color-text);
+        }
+
+        /* --- Header --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+
+        .logo {
+            font-family: var(--font-en);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            letter-spacing: 0.1em;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #333;
+            font-family: var(--font-en);
+            text-decoration: none;
+            transition: color 0.3s;
+            letter-spacing: 0.05em;
+        }
+
+        nav ul li a:hover {
+            color: var(--color-primary);
+        }
+
+        /* --- Hero Section Container --- */
+        .hero-container {
+            position: relative;
+            width: 100vw;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, #fafafa 0%, #f5f5f0 50%, #f0ebe5 100%);
+            padding-top: 80px;
+        }
+
+        /* Left: Text Content */
+        .hero-left {
+            position: relative;
+            width: 45%;
+            padding: 60px;
+            z-index: 10;
+        }
+
+        /* Right: Animation Area */
+        .hero-right {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        /* --- Card Stream Animation (Adapted from CodePen) --- */
+        .card-stream {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100vw;
+            height: 280px;
+            display: flex;
+            align-items: center;
+            overflow: visible;
+            z-index: 5;
+        }
+
+        .card-line {
+            display: flex;
+            align-items: center;
+            gap: 80px;
+            white-space: nowrap;
+            will-change: transform;
+        }
+
+        .card-wrapper {
+            position: relative;
+            width: 180px;
+            height: 260px;
+            flex-shrink: 0;
+        }
+
+        .card {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 180px;
+            height: 260px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .card-normal {
+            background: #fff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ddd;
+            z-index: 2;
+            clip-path: inset(0 0 0 var(--clip-right, 0%));
+            padding: 12px;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 6px;
+        }
+
+        .card-ascii {
+            background: transparent;
+            border: none;
+            z-index: 1;
+            clip-path: inset(0 calc(100% - var(--clip-left, 0%)) 0 0);
+        }
+
+        .ascii-content {
+            display: none;
+            /* Particles will visualize the code instead */
+        }
+
+        /* Scanner Line */
+        .scanner-line {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom,
+                    transparent 0%,
+                    rgba(0, 77, 64, 0.2) 20%,
+                    var(--color-primary) 50%,
+                    rgba(0, 77, 64, 0.2) 80%,
+                    transparent 100%);
+            box-shadow: 0 0 10px rgba(0, 77, 64, 0.3);
+            z-index: 20;
+            animation: scanPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scanPulse {
+
+            0%,
+            100% {
+                opacity: 0.7;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes glitch {
+            0% {
+                opacity: 1;
+            }
+
+            15% {
+                opacity: 0.9;
+            }
+
+            50% {
+                opacity: 0.8;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* --- Scanner Canvas --- */
+        #scannerCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 15;
+            pointer-events: none;
+        }
+
+        /* --- Hero Text Content --- */
+        .intro-content {
+            max-width: 480px;
+            color: var(--color-text);
+        }
+
+        .intro-jp {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 12px;
+            color: #333;
+            letter-spacing: 0.05em;
+        }
+
+        .intro-en {
+            font-family: var(--font-en);
+            font-size: 2.6rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            line-height: 1.15;
+            margin-bottom: 25px;
+            letter-spacing: -0.02em;
+        }
+
+        .intro-desc {
+            font-size: 0.9rem;
+            line-height: 1.9;
+            color: #555;
+            margin-bottom: 35px;
+        }
+
+        .btn-hero {
+            display: inline-block;
+            padding: 14px 35px;
+            background: var(--color-primary);
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            text-transform: uppercase;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            transition: all 0.3s;
+        }
+
+        .btn-hero:hover {
+            background: #003D33;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 77, 64, 0.3);
+        }
+
+        /* --- Content Sections --- */
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: 15px;
+            font-family: var(--font-en);
+        }
+
+        .section-title span {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--color-accent);
+        }
+
+        .mission {
+            background-color: var(--color-white);
+        }
+
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .mission-card {
+            padding: 40px 30px;
+            border: 1px solid #eee;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            color: var(--color-accent);
+            margin-bottom: 20px;
+            font-family: var(--font-en);
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--color-primary);
+        }
+
+        .card-text {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+        }
+
+        .criteria {
+            background-color: var(--color-bg-light);
+        }
+
+        .criteria-list {
+            background: var(--color-white);
+            padding: 60px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.02);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .criteria-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .criteria-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .check-mark {
+            color: var(--color-primary);
+            margin-right: 20px;
+            font-size: 1.2rem;
+        }
+
+        .criteria-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--color-text);
+        }
+
+        .criteria-content p {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+        }
+
+        .criteria-section {
+            margin-bottom: 50px;
+            padding: 30px;
+            background: #fafafa;
+            border-radius: 12px;
+            border: 1px solid #e8e8e8;
+        }
+
+        .criteria-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .criteria-section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: 10px;
+        }
+
+        .criteria-section-sub {
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: var(--color-text-light);
+            margin-left: 12px;
+            font-family: var(--font-en);
+        }
+
+        .criteria-section-desc {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            margin-bottom: 25px;
+        }
+
+        .zero-tolerance {
+            background-color: #263238;
+            color: var(--color-white);
+            text-align: center;
+        }
+
+        .zero-tolerance h2 {
+            color: var(--color-white);
+        }
+
+        .warning-box {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 30px 40px;
+            display: block;
+            margin-top: 25px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .warning-title {
+            color: #fff;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .warning-desc {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .warning-list {
+            list-style: none;
+            text-align: left;
+            margin: 0;
+        }
+
+        .warning-list li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+            font-size: 0.9rem;
+        }
+
+        .warning-list li::before {
+            content: '×';
+            position: absolute;
+            left: 0;
+            color: #EF5350;
+        }
+
+        .warning-note {
+            margin-top: 30px;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .membership {
+            text-align: center;
+            background-color: var(--color-white);
+        }
+
+        .price-box {
+            margin: 40px auto;
+            padding: 30px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            max-width: 400px;
+            background-color: #fafafa;
+        }
+
+        .price-label {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: 500;
+            color: var(--color-primary);
+            letter-spacing: 0.1em;
+        }
+
+        .price-note {
+            font-size: 0.8rem;
+            color: var(--color-text-light);
+            margin-top: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            border: 1px solid var(--color-accent);
+            color: var(--color-accent);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--color-accent);
+            color: var(--color-white);
+        }
+
+        .organization {
+            background-color: var(--color-bg-light);
+        }
+
+        .org-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        .org-table th,
+        .org-table td {
+            padding: 20px;
+            border-bottom: 1px solid #e0e0e0;
+            text-align: left;
+        }
+
+        .org-table th {
+            width: 30%;
+            font-weight: 500;
+            color: var(--color-primary);
+        }
+
+        footer {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .footer-links {
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0 15px;
+            font-size: 0.9rem;
+            text-decoration: none;
+        }
+
+        .copyright {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-family: var(--font-en);
+        }
+
+        @media (max-width: 768px) {
+            .intro-en {
+                font-size: 2rem;
+            }
+
+            .intro-content {
+                padding: 0 20px;
+                text-align: center;
+            }
+
+            .header-inner {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 0;
+            }
+
+            nav ul {
+                margin-top: 15px;
+            }
+
+            nav ul li {
+                margin: 0 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-inner">
+            <div class="logo">一般社団法人Authorized Cannabinoid</div>
+            <nav>
+                <ul>
+                    <li><a href="#about">ABOUT</a></li>
+                    <li><a href="#criteria">CRITERIA</a></li>
+                    <li><a href="#membership">MEMBERSHIP</a></li>
+                    <li><a href="#org">ORGANIZATION</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section with Card Animation -->
+    <section class="hero-container">
+        <!-- Left: Text Content -->
+        <div class="hero-left">
+            <div class="intro-content">
+                <h2 class="intro-jp">科学と法が、信頼を証明する</h2>
+                <h1 class="intro-en">The New Standard of<br>Cannabinoid Integrity.</h1>
+                <p class="intro-desc">
+                    適正な輸入通関、ISO17025準拠の科学的検査、完全なる法令遵守<br>
+                    日本のカンナビノイド市場に「正解」を定義する一般社団法人です
+                </p>
+                <a href="#about" class="btn-hero">私たちのミッション</a>
+            </div>
+        </div>
+
+        <!-- Right: Animation Area -->
+        <div class="hero-right">
+            <!-- Scanner Line -->
+            <div class="scanner-line"></div>
+
+            <!-- Scanner Canvas (Particles) -->
+            <canvas id="scannerCanvas"></canvas>
+
+            <!-- Moving Cards -->
+            <div class="card-stream">
+                <div class="card-line" id="cardLine">
+                    <!-- Cards will be generated via JS -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Sections -->
+    <section id="about" class="mission section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Mission</h2>
+                <span>設立理念</span>
+            </div>
+            <div class="mission-grid">
+                <div class="mission-card">
+                    <div class="card-icon">01</div>
+                    <h3 class="card-title">Legal Compliance<br>法令遵守</h3>
+                    <p class="card-text">関税法、薬機法、食品衛生法等の厳格な遵守。適正な輸入許可の取得を絶対条件とし、業界の健全化を牽引します</p>
+                </div>
+                <div class="mission-card">
+                    <div class="card-icon">02</div>
+                    <h3 class="card-title">Scientific Evidence<br>科学的根拠</h3>
+                    <p class="card-text">ISO/IEC 17025認定機関による検査証明を尊重。客観的な数値に基づく品質保証で、サプライチェーンの透明性を高めます</p>
+                </div>
+                <div class="mission-card">
+                    <div class="card-icon">03</div>
+                    <h3 class="card-title">Consumer Safety<br>消費者保護</h3>
+                    <p class="card-text">危険ドラッグや脱法製品との明確な差別化。正確な情報提供により、消費者の健康被害を未然に防ぎます</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="criteria" class="criteria section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>The Criteria</h2>
+                <span>認定基準・入会資格</span>
+            </div>
+
+            <!-- 認定基準（製品要件） -->
+            <div class="criteria-section">
+                <h3 class="criteria-section-title">認定基準<span class="criteria-section-sub">Product Requirements</span>
+                </h3>
+                <p class="criteria-section-desc">取扱製品および使用原料が以下の基準を満たしていること</p>
+                <div class="criteria-list">
+                    <div class="criteria-item">
+                        <div class="check-mark">✓</div>
+                        <div class="criteria-content">
+                            <h4>適正な輸入通関</h4>
+                            <p>関税法第67条に基づく輸入許可証を保有していること</p>
+                        </div>
+                    </div>
+                    <div class="criteria-item">
+                        <div class="check-mark">✓</div>
+                        <div class="criteria-content">
+                            <h4>区分の明確化</h4>
+                            <p>「食品」または「雑貨」として正規に輸入された製品であること</p>
+                        </div>
+                    </div>
+                    <div class="criteria-item">
+                        <span class="check-mark">✓</span>
+                        <div class="criteria-content">
+                            <h4>原料の安全性証明</h4>
+                            <p>使用する原料について、ISO17025認定機関による成分分析が行われていること</p>
+                            <p class="criteria-note">※安全性向上のため、フルパネル検査（残留農薬、残留溶媒、重金属、微生物、指定薬物等の包括的試験）の実施を推奨します</p>
+                        </div>
+                    </div>
+                    <div class="criteria-item">
+                        <div class="check-mark">✓</div>
+                        <div class="criteria-content">
+                            <h4>納税の義務</h4>
+                            <p>関税・消費税・地方消費税等の適法納付が行われていること</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 入会資格（事業者要件） -->
+            <div class="criteria-section">
+                <h3 class="criteria-section-title">入会資格<span class="criteria-section-sub">Membership Requirements</span>
+                </h3>
+                <p class="criteria-section-desc">事業者として以下の要件を満たしていること：</p>
+                <div class="criteria-list">
+                    <div class="criteria-item">
+                        <div class="check-mark">✓</div>
+                        <div class="criteria-content">
+                            <h4>国内連絡体制</h4>
+                            <p>日本国内において責任を持って対応できる連絡体制を有すること</p>
+                        </div>
+                    </div>
+                    <div class="criteria-item">
+                        <div class="check-mark">✓</div>
+                        <div class="criteria-content">
+                            <h4>法令遵守</h4>
+                            <p>関税法、薬機法、食品衛生法等の関係法令を遵守していること</p>
+                        </div>
+                    </div>
+                    <div class="criteria-item">
+                        <div class="check-mark">✓</div>
+                        <div class="criteria-content">
+                            <h4>除外要件の非該当</h4>
+                            <p>下記「排除方針」に定める除外要件に該当しないこと</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="zero-tolerance section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Zero Tolerance</h2>
+            </div>
+            <p>当法人は業界の健全化を最優先します<br>以下に該当する事業者の入会は一切認められません</p>
+
+            <div class="warning-box">
+                <h4 class="warning-title">1. 併売禁止製品の販売</h4>
+                <p class="warning-desc">同一の販売チャネルにおいて、以下を取り扱う者</p>
+                <ul class="warning-list">
+                    <li>合法紙および規制薬物のアナログ化製品</li>
+                    <li>指定薬物を含有する製品</li>
+                    <li>その他危険ドラッグ類似製品</li>
+                    <li>精神作用性成分を用いたエディブル</li>
+                </ul>
+            </div>
+
+            <div class="warning-box">
+                <h4 class="warning-title">2. 法令違反製品の取扱い</h4>
+                <ul class="warning-list">
+                    <li>THC残留限度値超過（油脂・粉末10ppm、水溶液0.1ppm、その他1ppm）</li>
+                    <li>指定薬物含有製品</li>
+                    <li>輸入禁制品該当製品</li>
+                </ul>
+            </div>
+
+            <div class="warning-box">
+                <h4 class="warning-title">3. 不適切な広告・表示</h4>
+                <ul class="warning-list">
+                    <li>医薬品的効能効果の標榜</li>
+                    <li>虚偽・誇大広告</li>
+                    <li>未成年者を標的とする広告</li>
+                </ul>
+            </div>
+
+            <p class="warning-note">※ 本項に該当するか否かの判断は理事会が行います</p>
+        </div>
+    </section>
+
+    <section id="membership" class="membership section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Membership</h2>
+                <span>会員制度</span>
+            </div>
+            <p>志を同じくする事業者の皆様へ<br>入会に伴う費用負担は現在設けておりません</p>
+            <div class="price-box">
+                <div class="price-label">入会金・年会費</div>
+                <div class="price">無料</div>
+                <div class="price-note">※審査制</div>
+            </div>
+            <a href="https://forms.gle/RjCoL1tDApaQqEsU9" class="btn" target="_blank" rel="noopener noreferrer">会員加盟申請
+                (フォーム)</a>
+        </div>
+    </section>
+
+    <section id="org" class="organization section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Organization</h2>
+                <span>組織概要</span>
+            </div>
+            <table class="org-table">
+                <tr>
+                    <th>名称</th>
+                    <td>一般社団法人 Authorized Cannabinoid</td>
+                </tr>
+                <tr>
+                    <th>主たる事務所</th>
+                    <td>熊本県熊本市中央区</td>
+                </tr>
+                <tr>
+                    <th>設立</th>
+                    <td>2025年</td>
+                </tr>
+                <tr>
+                    <th>役員</th>
+                    <td>
+                        代表理事：松藤 渡<br>
+                        監事：村田 優也<br>
+                        理事：栗原 俊次、関岡 史隆
+                    </td>
+                </tr>
+                <tr>
+                    <th>事業内容</th>
+                    <td>
+                        1. カンナビノイド製品等の適正な輸入通関の促進<br>
+                        2. 会員事業者の健全な発展及び支援<br>
+                        3. 消費者の安全確保及び情報提供<br>
+                        4. 教育研修及び学術交流事業<br>
+                        5. その他関連事業
+                    </td>
+                </tr>
+                <tr>
+                    <th>事業年度</th>
+                    <td>毎年12月1日から翌年11月30日まで</td>
+                </tr>
+                <tr>
+                    <th>公告の方法</th>
+                    <td>官報</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#criteria">Criteria</a>
+                <a href="#membership">Membership</a>
+                <a href="#org">Organization</a>
+            </div>
+            <p class="copyright">© Authorized Cannabinoid. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- CONFIG (Adapted from CodePen) ---
+        const codeChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789(){}[]<>;:,._-+=!@#$%^&*|\\/\"'`~?";
+        let scannerX = window.innerWidth / 2; // Will be updated dynamically
+        const scannerWidth = 8;
+
+        // Update scanner position based on DOM element
+        function updateScannerPosition() {
+            const scannerLine = document.querySelector('.scanner-line');
+            if (scannerLine) {
+                const rect = scannerLine.getBoundingClientRect();
+                scannerX = rect.left + rect.width / 2;
+            }
+        }
+
+        // --- Card Stream Controller ---
+        class CardStreamController {
+            constructor() {
+                this.cardLine = document.getElementById("cardLine");
+                this.position = 0; // Start immediately visible
+                this.velocity = 100; // px/s
+                this.direction = -1; // Move left
+                this.isAnimating = true;
+                this.lastTime = 0;
+                this.cardLineWidth = 0;
+
+                this.init();
+            }
+
+            init() {
+                this.populateCardLine();
+                this.calculateDimensions();
+                this.animate();
+            }
+
+            calculateDimensions() {
+                const cardWidth = 180;
+                const cardGap = 80;
+                const cardCount = this.cardLine.children.length;
+                this.cardLineWidth = (cardWidth + cardGap) * cardCount;
+            }
+
+            generateCode(width, height) {
+                const header = [
+                    "// COA Analysis Report",
+                    "const CANNABINOID_PROFILE = {",
+                    "  CBD: 0.00, CBG: 0.00,",
+                    "  D9THC: '<LOD',",
+                    "  THCA: '<LOD'",
+                    "};",
+                    "function verifyCOA(data) {",
+                    "  return data.THC < 0.0001;",
+                    "}",
+                ];
+                let flow = header.join(" ");
+                flow = flow.replace(/\s+/g, " ").trim();
+                const totalChars = width * height;
+                while (flow.length < totalChars + width) {
+                    flow += " " + codeChars[Math.floor(Math.random() * codeChars.length)];
+                }
+
+                let out = "";
+                let offset = 0;
+                for (let row = 0; row < height; row++) {
+                    let line = flow.slice(offset, offset + width);
+                    if (line.length < width) line += " ".repeat(width - line.length);
+                    out += line + (row < height - 1 ? "\n" : "");
+                    offset += width;
+                }
+                return out;
+            }
+
+            createCardWrapper(index) {
+                const wrapper = document.createElement("div");
+                wrapper.className = "card-wrapper";
+
+                // Normal Card (Image)
+                const normalCard = document.createElement("div");
+                normalCard.className = "card card-normal";
+
+                // Use confirmed existing COA images
+                const cardImages = [
+                    "image/coa-image-1.png",
+                    "image/coa-image-2.png",
+                    "image/coa-image-3.png",
+                    "image/coa-image-4.png",
+                    "image/coa-image-5.png",
+                    "image/coa-image-6.png",
+                    "image/coa-image-7.png",
+                    "image/coa-image-8.png"
+                ];
+
+                const cardImage = document.createElement("img");
+                cardImage.className = "card-image";
+                cardImage.src = cardImages[index % cardImages.length];
+                cardImage.alt = "COA Document";
+
+                cardImage.onerror = () => {
+                    console.error("Image failed to load:", cardImage.src);
+                    // Fallback visual
+                    cardImage.style.display = "none";
+                    normalCard.style.background = "#f0f0f0";
+                    normalCard.style.display = "flex";
+                    normalCard.style.alignItems = "center";
+                    normalCard.style.justifyContent = "center";
+                    normalCard.textContent = "COA Document";
+                    normalCard.style.color = "#888";
+                    normalCard.style.fontFamily = "sans-serif";
+                    normalCard.style.fontSize = "0.8rem";
+                };
+
+                normalCard.appendChild(cardImage);
+
+                // ASCII Card (Code)
+                const asciiCard = document.createElement("div");
+                asciiCard.className = "card card-ascii";
+
+                const asciiContent = document.createElement("div");
+                asciiContent.className = "ascii-content";
+                asciiContent.textContent = this.generateCode(30, 24);
+
+                asciiCard.appendChild(asciiContent);
+                wrapper.appendChild(normalCard);
+                wrapper.appendChild(asciiCard);
+
+                return wrapper;
+            }
+
+            updateCardClipping() {
+                // Update scanner position from DOM
+                updateScannerPosition();
+
+                const scannerLeft = scannerX - scannerWidth / 2;
+                const scannerRight = scannerX + scannerWidth / 2;
+
+                // Clear active card zones for particle system
+                window.activeCardZones = [];
+
+                document.querySelectorAll(".card-wrapper").forEach((wrapper) => {
+                    const rect = wrapper.getBoundingClientRect();
+                    const cardLeft = rect.left;
+                    const cardRight = rect.right;
+                    const cardWidth = rect.width;
+
+                    const normalCard = wrapper.querySelector(".card-normal");
+
+                    if (cardLeft < scannerRight && cardRight > scannerLeft) {
+                        // Card is crossing the scanner - store its Y position for particles
+                        window.activeCardZones.push({
+                            top: rect.top,
+                            bottom: rect.bottom,
+                            centerY: rect.top + rect.height / 2
+                        });
+
+                        // Calculate how much of the card has passed the scanner
+                        const passedAmount = Math.max(scannerX - cardLeft, 0);
+                        const clipPct = Math.min((passedAmount / cardWidth) * 100, 100);
+
+                        // Clip the image from the left as it passes scanner
+                        normalCard.style.clipPath = `inset(0 0 0 ${clipPct}%)`;
+                        wrapper.style.opacity = 1;
+                    } else if (cardRight < scannerLeft) {
+                        // Fully past scanner - hide card completely
+                        normalCard.style.clipPath = 'inset(0 0 0 100%)';
+                        wrapper.style.opacity = 0;
+                    } else {
+                        // Not yet at scanner - show full card
+                        normalCard.style.clipPath = 'inset(0 0 0 0)';
+                        wrapper.style.opacity = 1;
+                    }
+                });
+            }
+
+            populateCardLine() {
+                this.cardLine.innerHTML = "";
+                const cardsCount = 20;
+                for (let i = 0; i < cardsCount; i++) {
+                    const cardWrapper = this.createCardWrapper(i);
+                    this.cardLine.appendChild(cardWrapper);
+                }
+            }
+
+            animate() {
+                const currentTime = performance.now();
+                const deltaTime = (currentTime - this.lastTime) / 1000;
+                this.lastTime = currentTime;
+
+                if (this.isAnimating) {
+                    this.position += this.velocity * this.direction * deltaTime;
+
+                    // Loop cards
+                    if (this.position < -this.cardLineWidth) {
+                        this.position = window.innerWidth;
+                    } else if (this.position > window.innerWidth) {
+                        this.position = -this.cardLineWidth;
+                    }
+
+                    this.cardLine.style.transform = `translateX(${this.position}px)`;
+                    this.updateCardClipping();
+                }
+
+                requestAnimationFrame(() => this.animate());
+            }
+        }
+
+        // --- Scanner Particle System (Adapted) ---
+        class ParticleScanner {
+            constructor() {
+                this.canvas = document.getElementById("scannerCanvas");
+                this.ctx = this.canvas.getContext("2d");
+                this.container = this.canvas.parentElement;
+                this.w = this.container.offsetWidth;
+                this.h = this.container.offsetHeight;
+                this.particles = [];
+                this.maxParticles = 800;
+                this.lightBarX = this.w / 2;
+                this.lightBarWidth = 4;
+
+                this.setupCanvas();
+                this.createGradientCache();
+                this.initParticles();
+                this.animate();
+
+                window.addEventListener("resize", () => this.onResize());
+            }
+
+            setupCanvas() {
+                this.canvas.width = this.w;
+                this.canvas.height = this.h;
+            }
+
+            onResize() {
+                this.w = this.container.offsetWidth;
+                this.h = this.container.offsetHeight;
+                this.lightBarX = this.w / 2;
+                this.setupCanvas();
+            }
+
+            createGradientCache() {
+                this.gradientCanvas = document.createElement("canvas");
+                this.gradientCtx = this.gradientCanvas.getContext("2d");
+                this.gradientCanvas.width = 16;
+                this.gradientCanvas.height = 16;
+
+                const half = 8;
+                const gradient = this.gradientCtx.createRadialGradient(half, half, 0, half, half, half);
+                gradient.addColorStop(0, "rgba(255, 255, 255, 1)");
+                gradient.addColorStop(0.4, "rgba(197, 160, 89, 0.9)"); // Gold
+                gradient.addColorStop(0.8, "rgba(197, 160, 89, 0.3)");
+                gradient.addColorStop(1, "transparent");
+
+                this.gradientCtx.fillStyle = gradient;
+                this.gradientCtx.beginPath();
+                this.gradientCtx.arc(half, half, half, 0, Math.PI * 2);
+                this.gradientCtx.fill();
+            }
+
+            createParticle() {
+                const chars = "0123456789ABCDEF<>{}[]();:.,_-+=!@#$%^&*|/\\\"'`~?";
+
+                // If cards are crossing scanner, spawn particles from card positions
+                let yPos;
+                const zones = window.activeCardZones || [];
+                if (zones.length > 0) {
+                    // Pick a random zone (card) and spawn within its Y range
+                    const zone = zones[Math.floor(Math.random() * zones.length)];
+                    // Convert from screen coordinates to canvas coordinates
+                    const containerRect = this.container.getBoundingClientRect();
+                    const relativeTop = zone.top - containerRect.top;
+                    const relativeBottom = zone.bottom - containerRect.top;
+                    yPos = relativeTop + Math.random() * (relativeBottom - relativeTop);
+                } else {
+                    // No cards crossing - minimal particles
+                    yPos = Math.random() * this.h;
+                }
+
+                return {
+                    x: this.lightBarX + (Math.random() - 0.5) * 10,
+                    y: yPos,
+                    vx: -(Math.random() * 3 + 1), // Move LEFT (negative), faster
+                    vy: (Math.random() - 0.5) * 1.5, // More vertical spread
+                    char: chars[Math.floor(Math.random() * chars.length)],
+                    size: Math.random() * 10 + 6,
+                    alpha: Math.random() * 0.4 + 0.6,
+                    life: 1.0,
+                    decay: Math.random() * 0.01 + 0.005,
+                };
+            }
+
+            initParticles() {
+                // Start with no particles - they only spawn when cards cross scanner
+                this.particles = [];
+            }
+
+            updateParticle(p) {
+                p.x += p.vx;
+                p.y += p.vy;
+                p.life -= p.decay;
+            }
+
+            // Spawn new particles only when cards are crossing
+            spawnParticlesFromCards() {
+                const zones = window.activeCardZones || [];
+                if (zones.length === 0) return;
+
+                // Spawn multiple particles per frame when cards are crossing
+                for (let i = 0; i < 8; i++) {
+                    const zone = zones[Math.floor(Math.random() * zones.length)];
+                    const containerRect = this.container.getBoundingClientRect();
+                    const relativeTop = zone.top - containerRect.top;
+                    const relativeBottom = zone.bottom - containerRect.top;
+                    const yPos = relativeTop + Math.random() * (relativeBottom - relativeTop);
+
+                    const chars = "0123456789ABCDEF<>{}[]();:.,_-+=!@#$%^&*|/\\\"'`~?";
+                    this.particles.push({
+                        x: this.lightBarX + (Math.random() - 0.5) * 10,
+                        y: yPos,
+                        vx: -(Math.random() * 4 + 2),
+                        vy: (Math.random() - 0.5) * 2,
+                        char: chars[Math.floor(Math.random() * chars.length)],
+                        size: Math.random() * 12 + 8,
+                        alpha: Math.random() * 0.5 + 0.5,
+                        life: 1.0,
+                        decay: Math.random() * 0.02 + 0.01,
+                    });
+                }
+            }
+
+            drawParticle(p) {
+                if (p.life <= 0) return;
+                this.ctx.globalAlpha = p.alpha * p.life;
+                this.ctx.fillStyle = "#004D40"; // Dark green for visibility on light bg
+                this.ctx.font = `bold ${p.size}px 'Roboto Mono', monospace`;
+                this.ctx.fillText(p.char, p.x, p.y);
+            }
+
+            drawLightBar() {
+                this.ctx.globalCompositeOperation = "lighter";
+
+                // Core line
+                const coreGradient = this.ctx.createLinearGradient(this.lightBarX - 2, 0, this.lightBarX + 2, 0);
+                coreGradient.addColorStop(0, "rgba(255, 255, 255, 0)");
+                coreGradient.addColorStop(0.5, "rgba(255, 255, 255, 1)");
+                coreGradient.addColorStop(1, "rgba(255, 255, 255, 0)");
+
+                this.ctx.globalAlpha = 1;
+                this.ctx.fillStyle = coreGradient;
+                this.ctx.beginPath();
+                this.ctx.roundRect(this.lightBarX - 2, 0, 4, this.h, 10);
+                this.ctx.fill();
+
+                // Glow
+                const glowGradient = this.ctx.createLinearGradient(this.lightBarX - 16, 0, this.lightBarX + 16, 0);
+                glowGradient.addColorStop(0, "rgba(197, 160, 89, 0)");
+                glowGradient.addColorStop(0.5, "rgba(197, 160, 89, 0.6)");
+                glowGradient.addColorStop(1, "rgba(197, 160, 89, 0)");
+
+                this.ctx.globalAlpha = 0.8;
+                this.ctx.fillStyle = glowGradient;
+                this.ctx.beginPath();
+                this.ctx.roundRect(this.lightBarX - 16, 0, 32, this.h, 20);
+                this.ctx.fill();
+            }
+
+            render() {
+                this.ctx.globalCompositeOperation = "source-over";
+                this.ctx.clearRect(0, 0, this.w, this.h);
+
+                // Spawn particles only when cards are crossing scanner
+                this.spawnParticlesFromCards();
+
+                // Update and draw particles
+                this.ctx.globalCompositeOperation = "source-over";
+                for (const p of this.particles) {
+                    this.updateParticle(p);
+                    this.drawParticle(p);
+                }
+
+                // Remove dead particles (offscreen or life depleted)
+                this.particles = this.particles.filter(p => p.life > 0 && p.x > -50);
+            }
+
+            animate() {
+                this.render();
+                requestAnimationFrame(() => this.animate());
+            }
+        }
+
+        // Initialize
+        document.addEventListener("DOMContentLoaded", () => {
+            new CardStreamController();
+            new ParticleScanner();
+        });
+    </script>
+</body>
+
+</html>
